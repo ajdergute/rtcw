@@ -26,13 +26,7 @@ RUN /usr/games/steamcmd \
 
 RUN mkdir -p /output/main/ && \
     cp /gamefiles/Main/mp_*.pk3 /output/main/ && \
-    cp /gamefiles/Main/pak0.pk3 /output/main/
-
-ADD fetchRtcwPro.sh /output/fetchRtcwPro.sh
-RUN datapath="/output/rtcwpro-data" bash /output/fetchRtcwPro.sh "190781702" && \
-    mv /output/rtcwpro-data/rtcwpro /output/ && \
-    mv /output/rtcwpro-data/wolfded.x86 /output/ && \
-    rm -rf /output/rtcwpro-data
+    cp /gamefiles/Main/pak0.pk3 /output/main
 
 RUN wget https://b2.msh100.uk/file/msh-data/rtcw-pb.tar.gz && \
     md5sum rtcw-pb.tar.gz | cut -d' ' -f1 | grep 6f462200f4793502b1e654d84cf79d3c && \
