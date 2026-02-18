@@ -111,48 +111,48 @@ for map in $MAPS; do
     fi
 
     # This is the place we run mutations on the BSPs contained within maps.
-    rm -rf "${GAME_BASE}/rtcwpro/maps/${map}.bsp"
-    mkdir -p "${GAME_BASE}/tmp/"
-    unzip "${GAME_BASE}/main/${map}.pk3" -d "${GAME_BASE}/tmp/"
+    #rm -rf "${GAME_BASE}/rtcwpro/maps/${map}.bsp"
+    #mkdir -p "${GAME_BASE}/tmp/"
+    #unzip "${GAME_BASE}/main/${map}.pk3" -d "${GAME_BASE}/tmp/"
 
-    run_mutations "${map}"
+    #run_mutations "${map}"
 
-    rm -rf "${GAME_BASE}/tmp/"
+    #rm -rf "${GAME_BASE}/tmp/"
 done
 
 # We need to still run mutations on default maps if they exist.
-for map in "${!default_maps[@]}"; do
-    rm -rf "${GAME_BASE}/rtcwpro/maps/${map}.bsp"
-
-    echo "Running mutations on default map ${map}"
-    mkdir -p "${GAME_BASE}/tmp/maps/"
-    unzip \
-        -j "main/${default_maps[$map]}.pk3" \
-        -d "${GAME_BASE}/tmp/maps/" \
-        "maps/${map}.bsp"
-
-    run_mutations "${map}"
-
-    rm -rf "${GAME_BASE}/tmp/"
-done
+#for map in "${!default_maps[@]}"; do
+#    rm -rf "${GAME_BASE}/rtcwpro/maps/${map}.bsp"
+#
+#    echo "Running mutations on default map ${map}"
+#    mkdir -p "${GAME_BASE}/tmp/maps/"
+#    unzip \
+#        -j "main/${default_maps[$map]}.pk3" \
+#        -d "${GAME_BASE}/tmp/maps/" \
+#        "maps/${map}.bsp"
+#
+#    run_mutations "${map}"
+#
+#    rm -rf "${GAME_BASE}/tmp/"
+#done
 
 # We need to cleanup mapscripts on every invokation as we don't know what is
 # going to exist in the settings directory.
-for mapscript in "${GAME_BASE}/rtcwpro/maps/"*.script; do
-    [ -f "${mapscript}" ] || break
-    rm -rf "${mapscript}"
-done
+#for mapscript in "${GAME_BASE}/rtcwpro/maps/"*.script; do
+#    [ -f "${mapscript}" ] || break
+#    rm -rf "${mapscript}"
+#done
 
-for mapscript in "${SETTINGS_BASE}/mapscripts/"*.script; do
-    [ -f "${mapscript}" ] || break
-    cp "${mapscript}" "${GAME_BASE}/rtcwpro/maps/"
-done
+#for mapscript in "${SETTINGS_BASE}/mapscripts/"*.script; do
+#    [ -f "${mapscript}" ] || break
+#    cp "${mapscript}" "${GAME_BASE}/rtcwpro/maps/"
+#done
 
 # Only configs live within the config directory so we don't need to be careful
 # about just recreating this directory.
-rm -rf "${GAME_BASE}/rtcwpro/configs/"
-mkdir -p "${GAME_BASE}/rtcwpro/configs/"
-cp "${SETTINGS_BASE}/configs/"*.config "${GAME_BASE}/rtcwpro/configs/"
+#rm -rf "${GAME_BASE}/rtcwpro/configs/"
+#mkdir -p "${GAME_BASE}/rtcwpro/configs/"
+#cp "${SETTINGS_BASE}/configs/"*.config "${GAME_BASE}/rtcwpro/configs/"
 
 # We need to set g_needpass if a password is set
 if [ "${CONF_PASSWORD}" != "" ]; then
