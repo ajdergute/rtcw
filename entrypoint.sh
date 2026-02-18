@@ -183,7 +183,7 @@ binary="${GAME_BASE}/wolfded.x86"
 # Exec into the game
 exec "${binary}" \
     +set dedicated 2 \
-    +set fs_game "rtcwpro" \
+    +set fs_game "osp" \
     +set com_hunkmegs 512 \
     +set vm_game 0 \
     +set ttycon 0 \
